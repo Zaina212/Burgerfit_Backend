@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  postgres-clientes:
+    image: postgres:16
+    container_name: postgres-clientes
+    environment:
+      POSTGRES_DB: burgerfit_clientes
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5433:5432"
+    volumes:
+      - clientes_data:/var/lib/postgresql/data
+
+  postgres-productos:
+    image: postgres:16
+    container_name: postgres-productos
+    environment:
+      POSTGRES_DB: burgerfit_productos
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5434:5432"
+    volumes:
+      - productos_data:/var/lib/postgresql/data
+
+  postgres-pedidos:
+    image: postgres:16
+    container_name: postgres-pedidos
+    environment:
+      POSTGRES_DB: burgerfit_pedidos
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5435:5432"
+    volumes:
+      - pedidos_data:/var/lib/postgresql/data
+
+volumes:
+  clientes_data:
+  productos_data:
+  pedidos_data:
